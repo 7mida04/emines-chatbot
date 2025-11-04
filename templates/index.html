@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMINES Assistant - UM6P</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='emines logo.png') }}" alt="EMINES - UM6P Logo">
+                </div>
+            </div>
+            
+            <button class="new-chat-btn" onclick="newChat()">
+                <i class="fas fa-plus"></i>
+                Nouvelle conversation
+            </button>
+
+            <div class="info-section">
+                <h3><i class="fas fa-info-circle"></i> À propos</h3>
+                <p>Assistant virtuel spécialisé pour EMINES - UM6P</p>
+                <ul>
+                    <li><i class="fas fa-graduation-cap"></i> Cycle Préparatoire (2 ans)</li>
+                    <li><i class="fas fa-user-graduate"></i> Cycle Ingénieur (3 ans)</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Ben Guerir, Maroc</li>
+                </ul>
+            </div>
+
+            <div class="languages-section">
+                <h3><i class="fas fa-globe"></i> Langues</h3>
+                <div class="language-badges">
+                    <span class="badge">🇫🇷 Français</span>
+                    <span class="badge">🇬🇧 English</span>
+                    <span class="badge">🇲🇦 Darija</span>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h3><i class="fas fa-envelope"></i> Contact</h3>
+                <a href="mailto:contact@emines-ingenieur.org">
+                    <i class="fas fa-envelope"></i> contact@emines-ingenieur.org
+                </a>
+                <a href="https://emines-ingenieur.org" target="_blank">
+                    <i class="fas fa-globe"></i> emines-ingenieur.org
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Chat Area -->
+        <div class="main-content">
+            <div class="chat-header">
+                <h2><i class="fas fa-robot"></i> Assistant EMINES</h2>
+                <p>💬 Posez vos questions en Français, Anglais ou Darija</p>
+            </div>
+
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="welcome-screen">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h1>Bienvenue sur l'Assistant EMINES</h1>
+                    <p>Je suis votre assistant virtuel pour toutes vos questions sur EMINES - School of Industrial Management</p>
+                    
+                    <div class="quick-questions">
+                        <h3>Questions fréquentes :</h3>
+                        <div class="question-grid">
+                            <button class="quick-btn" onclick="sendQuickQuestion('Quels sont les programmes offerts par EMINES ?')">
+                                <i class="fas fa-book"></i>
+                                <span>Programmes</span>
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickQuestion('Comment postuler à EMINES ?')">
+                                <i class="fas fa-file-alt"></i>
+                                <span>Admission</span>
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickQuestion('Où se trouve EMINES ?')">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Localisation</span>
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickQuestion('Quels sont les frais de scolarité ?')">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>Frais</span>
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickQuestion('Quelles sont les dates limites ?')">
+                                <i class="fas fa-calendar"></i>
+                                <span>Dates</span>
+                            </button>
+                            <button class="quick-btn" onclick="sendQuickQuestion('Comment contacter EMINES ?')">
+                                <i class="fas fa-phone"></i>
+                                <span>Contact</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div id="chat-messages" class="chat-messages"></div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <button class="voice-btn" id="voiceBtn" onclick="toggleVoiceRecording()">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="Tapez votre question ici..."
+                        onkeypress="handleKeyPress(event)"
+                    >
+                    <button class="send-btn" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <p class="input-hint">
+                    <i class="fas fa-info-circle"></i>
+                    Vous pouvez poser des questions en français, anglais ou darija
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transcription Modal -->
+    <div id="transcriptionModal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-microphone"></i> Transcription audio</h3>
+            <div id="transcriptionStatus" class="transcription-status"></div>
+            <div id="transcriptionText" class="transcription-text"></div>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="cancelTranscription()">
+                    <i class="fas fa-times"></i> Annuler
+                </button>
+                <button class="btn-send" onclick="sendTranscription()" id="sendTranscriptionBtn" disabled>
+                    <i class="fas fa-check"></i> Envoyer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

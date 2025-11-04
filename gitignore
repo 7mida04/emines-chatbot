@@ -1,0 +1,13 @@
+*.pyc
+__pycache__/
+.env
+.DS_Store
+.vscode/
+*.swp
+*.swo
+*~
+.idea/
+venv/
+env/
+analytics.json
+.streamlit/
