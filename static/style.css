@@ -665,18 +665,42 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        padding: 0;
+        min-height: 100vh;
+    }
+
     .container {
         flex-direction: column;
         height: 100vh;
+        min-height: 100vh;
         border-radius: 0;
+        max-width: 100%;
     }
 
     .sidebar {
         width: 100%;
         height: auto;
-        max-height: 200px;
+        max-height: 180px;
+        overflow-y: auto;
         border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 2px solid var(--cadet-blue);
+        padding: 15px;
+    }
+
+    .sidebar-header {
+        padding: 10px;
+        margin-bottom: 15px;
+    }
+
+    .logo img {
+        max-width: 200px;
+    }
+
+    .new-chat-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        margin-bottom: 0;
     }
 
     .info-section,
@@ -685,15 +709,193 @@ body {
         display: none;
     }
 
+    .main-content {
+        min-height: calc(100vh - 180px);
+        flex: 1;
+    }
+
+    .chat-header {
+        padding: 15px;
+    }
+
+    .chat-header h2 {
+        font-size: 18px;
+    }
+
+    .chat-header p {
+        font-size: 12px;
+    }
+
+    .welcome-screen {
+        padding: 20px;
+    }
+
+    .welcome-icon {
+        font-size: 50px;
+    }
+
     .welcome-content h1 {
-        font-size: 24px;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .welcome-content > p {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .quick-questions {
+        margin-top: 20px;
+    }
+
+    .quick-questions h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
     }
 
     .question-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .quick-btn {
+        padding: 15px 10px;
+        font-size: 12px;
+    }
+
+    .quick-btn i {
+        font-size: 20px;
+    }
+
+    .chat-messages {
+        padding: 15px;
+    }
+
+    .message {
+        margin-bottom: 15px;
     }
 
     .message-content {
         max-width: 85%;
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .message-avatar {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        margin: 0 8px;
+    }
+
+    .input-area {
+        padding: 12px 15px;
+        position: sticky;
+        bottom: 0;
+    }
+
+    .input-container {
+        padding: 6px;
+        gap: 8px;
+    }
+
+    .voice-btn,
+    .send-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    #messageInput {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .input-hint {
+        font-size: 10px;
+        margin-top: 5px;
+    }
+
+    /* Modal responsive */
+    .modal-content {
+        width: 90%;
+        max-width: 90%;
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .modal h2 {
+        font-size: 18px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .modal-buttons button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        max-height: 150px;
+        padding: 10px;
+    }
+
+    .sidebar-header {
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+
+    .logo img {
+        max-width: 160px;
+    }
+
+    .new-chat-btn {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .chat-header {
+        padding: 12px;
+    }
+
+    .chat-header h2 {
+        font-size: 16px;
+    }
+
+    .welcome-content h1 {
+        font-size: 20px;
+    }
+
+    .welcome-content > p {
+        font-size: 13px;
+    }
+
+    .message-content {
+        max-width: 90%;
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .message-avatar {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        margin: 0 6px;
+    }
+
+    .voice-btn,
+    .send-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    #messageInput {
+        font-size: 13px;
+        padding: 8px;
     }
 }
