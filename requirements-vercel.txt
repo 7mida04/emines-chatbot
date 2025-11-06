@@ -1,0 +1,14 @@
+# Lightweight requirements for Vercel deployment
+python-dotenv==1.0.0
+pypdf==3.17.1
+langchain==0.1.13
+langchain-openai==0.0.8
+langchain-community==0.0.29
+openai==1.12.0
+httpx==0.27.2
+Flask==3.0.0
+fireworks-ai==0.15.4
+
+# Lightweight vector store alternative
+numpy==1.24.3
+tiktoken==0.5.2
