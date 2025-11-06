@@ -46,7 +46,26 @@ async function sendMessage() {
     }
 }
 
-// Stream chat response using Server-Sent Events
+// Format markdown text to HTML
+function formatMarkdown(text) {
+    // Gras: **texte** ou __texte__
+    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    text = text.replace(/__(.*?)__/g, '<strong>$1</strong>');
+    
+    // Italique: *texte* ou _texte_
+    text = text.replace(/\*(.*?)\*/g, '<em>$1</em>');
+    text = text.replace(/_(.*?)_/g, '<em>$1</em>');
+    
+    // Listes à puces: - item ou * item
+    text = text.replace(/^[\-\*] (.+)$/gm, '• $1');
+    
+    // Sauts de ligne
+    text = text.replace(/\n/g, '<br>');
+    
+    return text;
+}
+
+// Stream chat response from backend
 async function streamChatResponse(message, typingId) {
     const chatMessages = document.getElementById('chat-messages');
     
@@ -110,7 +129,7 @@ async function streamChatResponse(message, typingId) {
                         const parsed = JSON.parse(data);
                         if (parsed.text) {
                             fullText += parsed.text;
-                            textDiv.textContent = fullText;
+                            textDiv.innerHTML = formatMarkdown(fullText);
                             scrollToBottom();
                         }
                     } catch (e) {
@@ -148,7 +167,7 @@ function addMessage(text, sender) {
     
     const textDiv = document.createElement('div');
     textDiv.className = 'message-text';
-    textDiv.textContent = text;
+    textDiv.innerHTML = sender === 'bot' ? formatMarkdown(text) : text;
     
     contentDiv.appendChild(textDiv);
     

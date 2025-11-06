@@ -224,14 +224,16 @@ body {
 .welcome-screen {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: 40px;
+    overflow-y: auto;
 }
 
 .welcome-content {
     text-align: center;
     max-width: 700px;
+    width: 100%;
 }
 
 .welcome-icon {
@@ -389,6 +391,26 @@ body {
     font-size: 15px;
     line-height: 1.6;
     white-space: pre-wrap;
+}
+
+/* Markdown formatting styles */
+.message-text strong {
+    font-weight: 700;
+    color: var(--biscay);
+}
+
+.message-text em {
+    font-style: italic;
+    color: var(--cape-cod);
+}
+
+.message-text ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.message-text li {
+    margin: 5px 0;
 }
 
 .typing-indicator {
@@ -727,11 +749,19 @@ body {
     }
 
     .welcome-screen {
-        padding: 20px;
+        padding: 15px;
+        align-items: flex-start;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .welcome-content {
+        padding-bottom: 20px;
     }
 
     .welcome-icon {
         font-size: 50px;
+        margin-bottom: 10px;
     }
 
     .welcome-content h1 {
@@ -741,11 +771,12 @@ body {
 
     .welcome-content > p {
         font-size: 14px;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     .quick-questions {
-        margin-top: 20px;
+        margin-top: 15px;
+        margin-bottom: 20px;
     }
 
     .quick-questions h3 {
